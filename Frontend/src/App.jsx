@@ -41,7 +41,7 @@ export default function App() {
   const [error, setError] = useState(false);
 async function getRandomReviewFromJSON() {
   try {
-    const response = await fetch('/public/demo_reviews.json');
+    const response = await fetch('/data/demo_reviews.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
