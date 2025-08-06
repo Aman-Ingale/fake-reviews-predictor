@@ -107,7 +107,7 @@ async function getRandomReviewFromJSON() {
                   <img className="h-8 cursor-pointer" src={database} alt="Database Icon" />
 
         </a>
-        <a href="https://github.com/Aman-Ingale" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/Aman-Ingale/fake-reviews-predictor" target="_blank" rel="noopener noreferrer">
 
         <img className="h-8 cursor-pointer" src={github} alt="Database Icon" />
         </a>
