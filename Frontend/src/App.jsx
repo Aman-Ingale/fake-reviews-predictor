@@ -101,12 +101,12 @@ async function getRandomReviewFromJSON(jsonPath) {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-grayish-light via-blue-100 to-blue-200 dark:from-grayish-dark dark:via-gray-900 dark:to-blue-950 transition-colors duration-500">
       <div className="flex gap-3 w-full p-3 justify-end ">
         <a href="https://www.kaggle.com/datasets/mexwell/fake-reviews-dataset" target="_blank" rel="noopener noreferrer">
-                  <img className="h-8 cursor-pointer" src="../public/database.png" alt="Database Icon" />
+                  <img className="h-8 cursor-pointer" src="/public/database.png" alt="Database Icon" />
 
         </a>
         <a href="https://github.com/Aman-Ingale" target="_blank" rel="noopener noreferrer">
 
-        <img className="h-8 cursor-pointer" src="../public/logo.png" alt="Database Icon" />
+        <img className="h-8 cursor-pointer" src="/public/logo.png" alt="Database Icon" />
         </a>
       </div>
 
@@ -148,7 +148,7 @@ async function getRandomReviewFromJSON(jsonPath) {
           />
           <button type="button" onClick={handleAutoGenerate} className="cursor-pointer">
             <div className="flex w-full items-end gap-1 justify-end text-purple-500 text-xs font-bold ">
-          <img className="h-6 cursor-pointer" src="../public/text.png" alt="Database Icon" />Auto Generate
+          <img className="h-6 cursor-pointer" src="/public/text.png" alt="AI Icon" />Auto Generate
                   </div>
           </button>
           <h6 className="text-amber-500 text-sm">*Note: This model is still under development and may occasionally produce inaccurate results. Its performance is expected to improve with ongoing training and refinement. (^_^)</h6>
