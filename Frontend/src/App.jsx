@@ -39,9 +39,9 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [error, setError] = useState(false);
-async function getRandomReviewFromJSON(jsonPath) {
+async function getRandomReviewFromJSON() {
   try {
-    const response = await fetch(jsonPath);
+    const response = await fetch('/public/demo_reviews.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -61,7 +61,7 @@ async function getRandomReviewFromJSON(jsonPath) {
 }
   function handleAutoGenerate(e) {
     e.preventDefault();
-    getRandomReviewFromJSON('../src/assets/data/demo_reviews.json').then(randomReview => {
+    getRandomReviewFromJSON().then(randomReview => {
   if (randomReview) {
     setInputText(randomReview)
   }
