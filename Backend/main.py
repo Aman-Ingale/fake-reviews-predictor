@@ -13,7 +13,7 @@ with open("fake_review_predictor.pkl", "rb") as f:
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://fake-reviews-predictor.onrender.com"],
+    allow_origins=["https://fake-reviews-predictor-kd4j.vercel.app","https://fake-reviews-predi-git-dbd1f4-ingaleaman2516-gmailcoms-projects.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
