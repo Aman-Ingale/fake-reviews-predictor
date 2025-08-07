@@ -1,53 +1,30 @@
-# from fastapi import FastAPI
-# from pydantic import BaseModel
-# import pickle
-# from preprocess import transform_text
-# from fastapi.middleware.cors import CORSMiddleware
-
-# with open("vectorizer.pkl", "rb") as f:
-#     vectorizer = pickle.load(f)
-
-# with open("fake_review_predictor.pkl", "rb") as f:
-#     model = pickle.load(f)
-
-# app = FastAPI()
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["https://fake-reviews-predictor-kd4j.vercel.app","https://fake-reviews-predi-git-dbd1f4-ingaleaman2516-gmailcoms-projects.vercel.app",
-#     "http://localhost:5173/"],
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
-# class ReviewRequest(BaseModel):
-#     text: str
-
-# @app.post("/predict")
-# def predict_review(request: ReviewRequest):
-#     print(len(request.text))
-#     transformed = transform_text(request.text)
-#     vectorized = vectorizer.transform([transformed])
-#     prediction = model.predict(vectorized)
-#     print(prediction.tolist())
-#     return {
-#         "review": request.text,
-#         "transformed": transformed,
-#         "result": bool(prediction[0])  # Assuming 1 = fake, 0 = genuine
-#     }
+# main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import predict  # import your new route
+from routes import predict
+from database import connect_to_mongo, close_mongo_connection
+from contextlib import asynccontextmanager
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    connect_to_mongo()
+    yield
+    close_mongo_connection()
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
+
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://fake-reviews-predictor-kd4j.vercel.app","https://fake-reviews-predi-git-dbd1f4-ingaleaman2516-gmailcoms-projects.vercel.app",
-    "http://localhost:5173/"],
+    allow_origins=[
+        "https://fake-reviews-predictor-kd4j.vercel.app",
+        "https://fake-reviews-predi-git-dbd1f4-ingaleaman2516-gmailcoms-projects.vercel.app",
+        "http://localhost:5173/"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Routes
 app.include_router(predict.router)
-
-
