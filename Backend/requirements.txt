@@ -7,3 +7,4 @@ pydantic
 nltk
 pymongo
 python-dotenv
+motor-3.7.1
