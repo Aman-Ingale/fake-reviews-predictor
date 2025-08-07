@@ -4,7 +4,6 @@ import pickle
 from preprocess import transform_text
 from fastapi.middleware.cors import CORSMiddleware
 
-# Load vectorizer and model
 with open("vectorizer.pkl", "rb") as f:
     vectorizer = pickle.load(f)
 

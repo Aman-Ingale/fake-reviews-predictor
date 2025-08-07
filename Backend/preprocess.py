@@ -1,10 +1,8 @@
 import nltk
+nltk.data.path.append("./nltk_data")
 import string
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
-
-nltk.download('punkt', quiet=True)
-nltk.download('stopwords', quiet=True)
 
 ps = PorterStemmer()
 stop_words = set(stopwords.words('english'))
