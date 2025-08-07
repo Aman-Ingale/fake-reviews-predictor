@@ -8,5 +8,5 @@ def create_review(review: Review):
         result = db.reviews.insert_one(review_dict)
         return True
     except Exception as e:
-        print(e)
+        print(f"Error inserting review: {e}")
         return False
