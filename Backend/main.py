@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from pydantic import BaseModel
 import pickle
 from preprocess import transform_text
@@ -22,6 +22,9 @@ app.add_middleware(
 
 class ReviewRequest(BaseModel):
     text: str
+@app.head("/")
+async def health_check():
+    return Response(status_code=200)
 # POST request handler for /predict route
 @app.post("/predict")
 def predict_review(request: ReviewRequest):
