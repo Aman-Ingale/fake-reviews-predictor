@@ -37,4 +37,4 @@ def predict_review(request: ReviewRequest):
     }
 @app.get("/ping")
 def ping():
-    return {"message": "pong"}
+    return {"status": "ok"}
