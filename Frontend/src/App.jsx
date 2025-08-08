@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import database from "/public/database.png"
 import github from "/public/logo.png"
 import AI from "/public/text.png"
+//icons for cards
 const icons = [
   (
     <svg className="h-8 w-8 text-blue-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
@@ -16,7 +17,7 @@ const icons = [
 
 
 ];
-
+// body for cards
 const features = [
   {
     title: "How It Works",
@@ -39,8 +40,9 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [error, setError] = useState(false);
-async function getRandomReviewFromJSON() {
-  try {
+  // helper function for random reviews generation
+  async function getRandomReviewFromJSON() {
+    try {
     const response = await fetch('/data/demo_reviews.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -51,7 +53,7 @@ async function getRandomReviewFromJSON() {
     if (!Array.isArray(reviews) || reviews.length === 0) {
       throw new Error("JSON does not contain a valid array of strings.");
     }
-
+    
     const randomIndex = Math.floor(Math.random() * reviews.length);
     return reviews[randomIndex];
   } catch (error) {
@@ -59,6 +61,7 @@ async function getRandomReviewFromJSON() {
     return null;
   }
 }
+// handling random reviews generation
   function handleAutoGenerate(e) {
     e.preventDefault();
     getRandomReviewFromJSON().then(randomReview => {
@@ -68,8 +71,8 @@ async function getRandomReviewFromJSON() {
 });
 
 
-
   }
+  // handling form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (inputText.trim().length < 30) {
@@ -215,7 +218,7 @@ async function getRandomReviewFromJSON() {
 
       <footer className="w-full py-6 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-auto transition-colors">
         <div className="text-center text-gray-500 dark:text-gray-400 text-sm">
-          Made with <span className="text-red-500">❤️</span> by <a href="https://github.com/your-github" className="underline hover:text-blue-500 dark:hover:text-blue-300 transition-colors" target="_blank" rel="noopener noreferrer">Aman-Ingale</a>
+          Made with <span className="text-red-500">❤️</span> by <a href="https://github.com/Aman-Ingale" className="underline hover:text-blue-500 dark:hover:text-blue-300 transition-colors" target="_blank" rel="noopener noreferrer">Aman-Ingale</a>
         </div>
       </footer>
     </div>

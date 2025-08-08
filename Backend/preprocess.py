@@ -6,7 +6,7 @@ from nltk.stem.porter import PorterStemmer
 
 ps = PorterStemmer()
 stop_words = set(stopwords.words('english'))
-
+# helper function for preprocessing the text
 def transform_text(text: str) -> str:
     text = text.lower()
     tokens = nltk.word_tokenize(text)
